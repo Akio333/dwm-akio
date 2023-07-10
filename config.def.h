@@ -77,6 +77,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]	   	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *rofilaunchcmd[]	= { "rofi", "-combi-modi", "window,drun,ssh", "-show", "combi" };
+static const char *rofipowercmd[]	= { "rofi", "-show", "power-menu", "-modi", "power-menu:/home/akio/.local/bin/rofi-power-menu" };
 static const char *termcmd[]		= { "kitty", NULL };
 static const char *browsercmd[]		= { "firefox", NULL};
 static const char *lockcmd[] 	   	= { "i3lock-fancy", NULL};
@@ -85,8 +87,9 @@ static const char *scratchpadcmd[] 	= { "kitty", "-t", scratchpadname, "-g", "12
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rofilaunchcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
+	{ MODKEY,			XK_F4,	   spawn,	   {.v = rofipowercmd } },
 	{ WINKEY,                       XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
