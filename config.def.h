@@ -9,8 +9,8 @@ static const unsigned int maxWTab 			= 600;	/* tab menu width */
 static const unsigned int maxHTab 			= 200;	/* tab menu height */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
@@ -80,7 +80,7 @@ static const char *dmenucmd[]	   	= { "dmenu_run", "-m", dmenumon, "-fn", dmenuf
 static const char *rofilaunchcmd[]	= { "rofi", "-combi-modi", "window,drun,ssh", "-show", "combi" };
 static const char *rofipowercmd[]	= { "rofi", "-show", "power-menu", "-modi", "power-menu:/home/akio/.local/bin/rofi-power-menu" };
 static const char *termcmd[]		= { "kitty", NULL };
-static const char *browsercmd[]		= { "firefox", NULL};
+static const char *browsercmd[]		= { "google-chrome-stable", NULL};
 static const char *lockcmd[] 	   	= { "i3lock-fancy", NULL};
 static const char scratchpadname[] 	= "scratchpad";
 static const char *scratchpadcmd[] 	= { "kitty", "-t", scratchpadname, "-g", "120x34", NULL };
