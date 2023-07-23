@@ -1,5 +1,15 @@
+# Ommit all object files (make clean will remove these files)
 *.o
+
+# Ommit all original backup files produced after patching
 *.orig
+
+# Ommit all patch rejection files
 *.rej
+
+# Ommit config.h file as it is main culprit for build failuers even after sucessfull patch
 config.h
+
+# Ommit dwm binary file (make clean will remove this file)
 dwm
+
