@@ -93,9 +93,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofilaunchcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
-	{ MODKEY,			XK_F4,	   spawn,	   {.v = rofipowercmd } },
+	{ MODKEY,						XK_F4,	   spawn,	   {.v = rofipowercmd } },
 	{ WINKEY,                       XK_l,      spawn,          {.v = lockcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,			            XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -105,7 +105,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_q,	   view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
