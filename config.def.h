@@ -20,8 +20,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Cascadia Code PL:size=12" };
-static const char dmenufont[]       = "Cascadia Code PL:size=12";
+static const char *fonts[]          = { "Fira Code Nerd Font:size=12" };
+static const char dmenufont[]       = "Fira Code Nerd Font:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -78,24 +78,28 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#define STATUSBAR "dwmblocks"
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]	   	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *rofilaunchcmd[]	= { "rofi", "-combi-modi", "window,drun,ssh", "-show", "combi" };
 static const char *rofipowercmd[]	= { "rofi", "-show", "power-menu", "-modi", "power-menu:/home/akio/.local/bin/rofi-power-menu" };
 static const char *termcmd[]		= { "kitty", NULL };
-static const char *browsercmd[]		= { "google-chrome-stable", NULL};
+static const char *browsercmd[]		= { "brave", NULL};
+static const char *filemgrcmd[]		= { "thunar", NULL};
 static const char *lockcmd[] 	   	= { "i3lock-fancy", NULL};
-static const char scratchpadname[] 	= "scratchpad";
+static const char scratchpadname[] 	= "nvim";
 static const char *scratchpadcmd[] 	= { "kitty", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofilaunchcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
-	{ MODKEY,						XK_F4,	   spawn,	   {.v = rofipowercmd } },
+	{ MODKEY,						XK_F4,	   spawn,		   {.v = rofipowercmd } },
 	{ WINKEY,                       XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,			            XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,						XK_e,	   spawn,		   {.v = filemgrcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -142,7 +146,9 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
